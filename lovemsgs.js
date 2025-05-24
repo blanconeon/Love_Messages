@@ -13,7 +13,7 @@ const loveMessages = {
 const loveAdjectives = {
     line1Adj: ['fluffy', 'squishy', 'wobbly', 'goopy'],
     line2Adj: [ 'crusty', 'soggy', 'toasty', 'gravy-scented'],
-    line3Adj: ['pickle-colored', 'glitter-infested', 'hard,smelly'],
+    line3Adj: ['pickle-colored', 'glitter-infested', 'hard','smelly'],
     line4Adj: ['itchy', 'annoying', 'abandoned', 'spat']
 }
 
@@ -27,25 +27,64 @@ for (let wording in loveMessages) {
    
    switch (wording) {
    case 'line1Verb':  // the below code extracts the value in each key in a random index
-   line1.push(`she ${loveMessages[wording][indexedWord]} your name in the adjective air`)
+   line1.push(`she`, `${loveMessages[wording][indexedWord]}`, `your`, `name`, `in`, `the`, `adjective`, `air,`)
    break;
    case 'line2Verb':
-   line2.push(`she ${loveMessages[wording][indexedWord]} like adjective stars`)
+   line2.push(`she`, `${loveMessages[wording][indexedWord]}`, `like`, `adjective`, `stars,`)
    break;
    case 'line3Verb':
-   line3.push(`and my heart ${loveMessages[wording][indexedWord]} in adjective pleas`) 
+   line3.push(`and`, `my`, `heart`, `${loveMessages[wording][indexedWord]}`, `in`, `adjective`, `pleas,`) 
    break;
    case 'line4Verb':
-   line4.push(`Your touch ${loveMessages[wording][indexedWord]} my adjective soul.`)
+   line4.push(`Your`, `touch`, `${loveMessages[wording][indexedWord]}`, `my`, `adjective`, `soul.`)
    break;
    default:
    console.log("Not enough Information")   
 } 
-
+           
 }
-  
 
-console.log(line1);
-console.log(line2);
-console.log(line3);
-console.log(line4);
+let index1 =[]
+let index2 =[]
+let index3 =[]
+let index4 =[]
+for (let i = 0; i < 4; i++) {
+    index1 = line1.indexOf('adjective');
+    index2 = line2.indexOf('adjective');
+    index3 = line3.indexOf('adjective');
+    index4 = line4.indexOf('adjective');
+}
+
+
+
+
+for (words in loveAdjectives) {
+    let ramWord = randomWord(loveAdjectives[words].length)
+    switch (words) {
+    case 'line1Adj':
+    line1.splice(index1, 1, loveAdjectives[words][ramWord])
+    break;
+    case 'line2Adj':
+    line2.splice(index2, 1, loveAdjectives[words][ramWord])
+    break;
+    case 'line3Adj':
+    line3.splice(index3, 1, loveAdjectives[words][ramWord])  
+    break;
+    case 'line4Adj':
+    line4.splice(index4, 1, loveAdjectives[words][ramWord])
+    break;
+    default:
+    console.log('not enough information')          
+
+    }
+}
+
+const all = [line1, line2, line3, line4];
+
+const finalMessage = all.flat().join(' ');
+
+function finalLoveMessage () {
+    console.log(finalMessage);
+}
+
+finalLoveMessage();
