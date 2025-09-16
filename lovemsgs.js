@@ -89,4 +89,4 @@ function finalLoveMessage () {
     console.log(finalMessage);
 }
 
-finalLoveMessage()
+finalLoveMessage();
